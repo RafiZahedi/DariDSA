@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}درس‌ها{% endblock %}
 
 {% block content %}
 
 <h2 class="mb-4 text-success">مسیر یادگیری پیشنهادی</h2>
 <div class="mb-4">
+<ul class="list-group">
   {% for cat in roadmap_categories %}
-    <a href="?category={{ cat.code }}
-       {% if selected_category == cat.code %} active {% endif %}">
-      {{ cat.name }}
-    </a>
+    <li class="list-group-item">
+      <a href="?category={{ cat.code }}">{{ cat.name }}</a>
+    </li>
   {% endfor %}
+</ul>
+
 </div>
 
 {% if lessons_in_category %}

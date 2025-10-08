@@ -1,27 +1,25 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Lesson
 
+
+ROADMAP_ORDER = ['basics', 'data_structures', 'algorithms', 'interviews', 'other']
+
 def lesson_list(request):
-    # Get all unique categories from the database
-    categories = Lesson.objects.values('category').distinct()
-
-    # Selected category from GET param
     selected_category = request.GET.get('category')
+    category_map = dict(Lesson.CATEGORY_CHOICES)
 
-    # Lessons filtered by selected category
+    # get categories form lessons
+    categories_raw = Lesson.objects.values_list('category', flat=True)
+    categories_set = set(cat.strip() for cat in categories_raw if cat)
+
+    # Sort categories according to roadmap order
+    categories_sorted = [cat for cat in ROADMAP_ORDER if cat in categories_set]
+
+    roadmap_categories = [{'code': cat, 'name': category_map.get(cat, cat)} for cat in categories_sorted]
+
     lessons_in_category = Lesson.objects.filter(category=selected_category) if selected_category else []
-
-    # Latest 5 lessons
     latest_lessons = Lesson.objects.order_by('-created_at')[:5]
 
-    # Map category code to display name
-    category_map = dict(Lesson.CATEGORY_CHOICES)
-    roadmap_categories = [
-        {'code': cat['category'], 'name': category_map[cat['category']]} 
-        for cat in categories
-    ]
-
-    # Get the display name for selected category
     selected_category_name = category_map.get(selected_category) if selected_category else None
 
     return render(request, 'lessons/lesson_list.html', {
