@@ -1,18 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
+{% block title %}درس‌ها{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/lessons.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/lessons.js' %}"></script>
+{% endblock %}
+
+{% block content %}
 <h2 class="mb-4 text-success">مسیر یادگیری پیشنهادی</h2>
 <div class="mb-4">
-<ul class="list-group">
-  {% for cat in roadmap_categories %}
-    <li class="list-group-item">
-      <a href="?category={{ cat.code }}">{{ cat.name }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
+  <ul class="list-group">
+    {% for cat in roadmap_categories %}
+      <li class="list-group-item">
+        <a href="?category={{ cat.code }}">{{ cat.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
 
 {% if lessons_in_category %}
@@ -52,5 +60,4 @@
     </div>
   {% endfor %}
 </div>
-
 {% endblock %}

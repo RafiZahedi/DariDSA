@@ -1,74 +1,65 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}الگوریتم و ساختمان داده‌ها{% endblock %}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}DariDSA{% endblock %}</title>
+    <!-- fonts are loaded locally from static/fonts/ (Vazirmatn/Vazir) -->
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
 
-    <!-- Bootstrap RTL -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-
-    <!-- Google Font for Dari -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: "Vazirmatn", "Tahoma", sans-serif;
-        }
-        nav.navbar {
-            background-color: #0d6efd;
-        }
-        nav.navbar a.navbar-brand, nav.navbar a.nav-link {
-            color: white !important;
-        }
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1rem;
-            background: #f1f1f1;
-            border-top: 1px solid #ddd;
-        }
-        pre {
-            background-color: #1e1e1e !important;
-            color: #e0e0e0 !important;
-            border-radius: 8px;
-            padding: 1rem;
-            overflow-x: auto;
-        }
-    </style>
-
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/darkmode.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/darkmode-components.css' %}" />
     {% block extra_css %}{% endblock %}
-</head>
-<body>
+  </head>
+  <body class="light-mode">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a href="/" class="navbar-brand">DariDSA</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/">خانه</a>
+            </li>
+          </ul>
+          <button id="theme-toggle" class="btn btn-outline-secondary ms-3">
+            🌙 حالت شب
+          </button>
+        </div>
+      </div>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'lesson_list' %}">آموزش الگوریتم و ساختمان داده</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
+    <main class="container mt-4">{% block content %}{% endblock %}</main>
 
-<!-- Content -->
-<div class="container mt-4">
-    {% block content %}{% endblock %}
-</div>
+    <footer class="text-center py-3 mt-5 text-muted">
+      <small>© 2025 DariDSA — آموزش برنامه‌نویسی به زبان فارسی</small>
+    </footer>
 
-<!-- Footer -->
-<footer>
-    <p>ساخته شده با ❤️ برای یادگیری برنامه‌نویسی به زبان دری</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-{% block extra_js %}{% endblock %}
-</body>
-<!-- Highlight.js CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-
-<!-- Highlight.js JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
+    <!-- JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/darkmode.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
 </html>

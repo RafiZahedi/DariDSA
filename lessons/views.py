@@ -17,7 +17,7 @@ def lesson_list(request):
 
     roadmap_categories = [{'code': cat, 'name': category_map.get(cat, cat)} for cat in categories_sorted]
 
-    lessons_in_category = Lesson.objects.filter(category=selected_category) if selected_category else []
+    lessons_in_category = Lesson.objects.filter(category=selected_category).order_by('created_at') if selected_category else []
     latest_lessons = Lesson.objects.order_by('-created_at')[:5]
 
     selected_category_name = category_map.get(selected_category) if selected_category else None
