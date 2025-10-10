@@ -31,6 +31,12 @@ def lesson_list(request):
     })
 
 
+
+def feedback(request):
+    
+    return render(request, 'feedback.html')
+
 def lesson_detail(request, slug):
     lesson = get_object_or_404(Lesson, slug=slug)
     return render(request, 'lessons/lesson_detail.html', {'lesson': lesson})
+

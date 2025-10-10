@@ -13,7 +13,7 @@
 
 {% comment %} Road map part {% endcomment %}
 {% block content %}
-<h2 class="vazirmatn-font mb-4 text-success">مسیر یادگیری پیشنهادی</h2>
+<h2 class="vazirmatn-font mb-4 text-success text-center">مسیر یادگیری پیشنهادی</h2>
 <div class="mb-4">
   <ul class="list-group">
     {% for cat in roadmap_categories %}
@@ -27,7 +27,7 @@
 
 {% comment %} after clikcing a category {% endcomment %}
 {% if lessons_in_category %}
-  <h3 class="vazirmatn-font mb-3 text-secondary">درس‌های دسته {{ selected_category_name }}</h3>
+  <h3 class="vazirmatn-font mb-3 text-secondary text-center">درس‌های دسته {{ selected_category_name }}</h3>
   <div class="row">
     {% for lesson in lessons_in_category %}
       <div class="col-md-6 mb-4">
@@ -47,7 +47,7 @@
 {% endif %}
 
 {% comment %} Latest lessons part {% endcomment %}
-<h2 class="mb-4 text-primary">آخرین درس‌های اضافه شده</h2>
+<h2 class="mb-4 text-primary text-center">آخرین درس‌های اضافه شده</h2>
 <div class="row">
   {% for lesson in latest_lessons %}
     <div class="col-md-6 mb-4">

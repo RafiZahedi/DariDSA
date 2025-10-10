@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,6 +21,8 @@
     {% block extra_css %}{% endblock %}
   </head>
   <body class="light-mode">
+
+    {% comment%} navbar {% endcomment %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a href="/" class="navbar-brand">DariDSA</a>
@@ -39,7 +42,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/">خانه</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/feedback/"> ارسال بازخورد</a>
+            </li>
           </ul>
+
           <button id="theme-toggle" class="btn btn-outline-secondary ms-3">
             🌙 حالت شب
           </button>
@@ -48,7 +55,7 @@
     </nav>
 
     <main class="container mt-4">{% block content %}{% endblock %}</main>
-
+    {% comment%} footer {% endcomment %}
     <footer class="text-center py-3 mt-5 text-muted">
       <small>© 2025 DariDSA — آموزش برنامه‌نویسی به زبان فارسی</small>
     </footer>
